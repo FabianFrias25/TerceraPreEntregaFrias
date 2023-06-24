@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from .models import Equipos
+from .models import Equipos, Posiciones
 
 
 def Inicio(request):
@@ -11,8 +11,9 @@ def equipos_view(request):
 def Fixture(request):
     return render(request, 'AppFutbolArg/Fixture.html')
 
-def Posiciones(request):
-    return render(request, 'AppFutbolArg/Posiciones.html')
+def posiciones_view(request):
+    posiciones = Posiciones.objects.order_by('-puntos', 'PartidosJugados')
+    return render(request, 'AppFutbolArg/Posiciones.html', {'posiciones': posiciones})
 
 def ver_equipo(request):
     if "Nombre" in request.GET:
