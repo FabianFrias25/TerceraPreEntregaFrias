@@ -14,15 +14,15 @@ class Equipos(models.Model):
 
 
 class Fixture(models.Model):
-    fecha_dia = models.DateField()
-    fecha_hora = models.CharField(max_length=5)
-    equipo_local = models.ForeignKey(Equipos, on_delete=models.CASCADE, related_name='fixture_local')
-    equipo_visitante = models.ForeignKey(Equipos, on_delete=models.CASCADE, related_name='fixture_visitante')
+    dia = models.DateField()
+    hora = models.CharField(max_length=5)
+    local = models.ForeignKey(Equipos, on_delete=models.CASCADE, related_name='fixture_local')
+    visitante = models.ForeignKey(Equipos, on_delete=models.CASCADE, related_name='fixture_visitante')
 
     def __str__(self):
         return (
-            f'{self.fecha_dia} - {self.fecha_hora} - '
-            f'{self.equipo_local.nombre} vs {self.equipo_visitante.nombre}'
+            f'{self.dia} - {self.hora} - '
+            f'{self.local.nombre} vs {self.visitante.nombre}'
         )
 
     class Meta:
@@ -32,10 +32,10 @@ class Fixture(models.Model):
 class Posiciones(models.Model):
     equipo = models.OneToOneField(Equipos, on_delete=models.CASCADE, null=True, blank=True)
     puntos = models.IntegerField()
-    partidos_jugados = models.IntegerField(default=0)
+    PartidosJugados = models.IntegerField(default=0)
 
     def __str__(self):
-        return f'{self.equipo.nombre} - Puntos: {self.puntos} - PJ: {self.partidos_jugados}'
+        return f'{self.equipo.nombre} - Puntos: {self.puntos} - PJ: {self.PartidosJugados}'
 
     class Meta:
         verbose_name_plural = "Posiciones"
