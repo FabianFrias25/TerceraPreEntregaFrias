@@ -5,7 +5,7 @@ from .models import Equipos, Posiciones, Fixture
 def Inicio(request):
     return render(request, 'AppFutbolArg/Inicio.html')
 
-def equipos_view(request):
+def ver_equipos(request):
     return render(request, 'AppFutbolArg/Equipos.html')
 
 def ver_fixture(request):
@@ -13,7 +13,7 @@ def ver_fixture(request):
     return render(request, 'AppFutbolArg/Fixture.html', {'partidos': partidos})
 
 
-def posiciones_view(request):
+def ver_posiciones(request):
     posiciones = Posiciones.objects.order_by('-puntos', 'PartidosJugados')
     return render(request, 'AppFutbolArg/Posiciones.html', {'posiciones': posiciones})
 
