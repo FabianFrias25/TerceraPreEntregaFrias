@@ -1,42 +1,22 @@
-<!doctype html>
-<html>
-<head>
-    {% extends "AppFutbolArg/Inicio.html" %}
-    {% load static %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="{% static 'AppFutbolArg/css/fabifriasStyles.css' %}" rel="stylesheet">
-    <link href="{% static 'AppFutbolArg/css/styles.css' %}" rel="stylesheet">
-    <link href="{% static 'AppFutbolArg/css/heading.css' %}" rel="stylesheet">
-    <link href="{% static 'AppFutbolArg/css/body.css' %}" rel="stylesheet">
-    <link href="{% static 'AppFutbolArg/css/bootstrap.min.css' %}" rel="stylesheet">
-    <script src="{% static 'AppFutbolArg/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'AppFutbolArg/js/scripts.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-    <title>Fixture | Liga Argentina 2023</title>
-</head>
-<body>
-    {% block contenidoQueCambia %}
-    <div class="container mt-5 margenPosiciones">
-    <h2 style="color: darkblack; font-weight: bold">FECHA 22:</h2>
-    <table>
-        <tr>
-            <th>Día</th>
-            <th>Hora</th>
-            <th>Partido</th>
-        </tr>
-        {% for fixture in partidos %}
-        <tr>
-            <td>{{ fixture.dia|date:'d/m' }}</td>
-            <td>{{ fixture.hora }}</td>
-            <td>{{ fixture.local.nombre }} vs {{ fixture.visitante.nombre }}</td>
-        </tr>
-        {% endfor %}
-    </table>
-    </div>
-    {% endblock %}
+{% extends "AppFutbolArg/Inicio.html" %}
+{% load static %}
+<title>{% block title %}Posiciones | Liga Argentina 2023{% endblock %}</title>
+{% block contenidoQueCambia %}
+<div class="container mt-5 margenPosiciones">
+<h2 style="color: darkblack; font-weight: bold">FECHA 22:</h2>
+<table>
+    <tr>
+        <th>Día</th>
+        <th>Hora</th>
+        <th>Partido</th>
+    </tr>
+    {% for fixture in partidos %}
+    <tr>
+        <td>{{ fixture.dia|date:'d/m' }}</td>
+        <td>{{ fixture.hora }}</td>
+        <td>{{ fixture.local.nombre }} vs {{ fixture.visitante.nombre }}</td>
+    </tr>
+    {% endfor %}
+</table>
 </div>
-</body>
-</html>
+{% endblock %}

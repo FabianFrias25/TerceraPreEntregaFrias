@@ -1,46 +1,27 @@
-<!doctype html>
-<html lang="en">
-<head>
-    {% extends "AppFutbolArg/Inicio.html" %}
-    {% load static %}
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
-    <link href="{% static 'AppFutbolArg/css/fabifriasStyles.css' %}" rel="stylesheet">
-    <link href="{% static 'AppFutbolArg/css/styles.css' %}" rel="stylesheet">
-    <link href="{% static 'AppFutbolArg/css/heading.css' %}" rel="stylesheet">
-    <link href="{% static 'AppFutbolArg/css/body.css' %}" rel="stylesheet">
-    <link href="{% static 'AppFutbolArg/css/bootstrap.min.css' %}" rel="stylesheet">
-    <script src="{% static 'AppFutbolArg/js/bootstrap.min.js' %}"></script>
-    <script src="{% static 'AppFutbolArg/js/scripts.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js" crossorigin="anonymous"></script>
-    <title>Posiciones | Liga Argentina 2023</title>
-</head>
-<body>
-    {% block contenidoQueCambia %}
-    <div class="container mt-5 margenPosiciones">
-    <table id="posiciones" class="tablesorter1">
-        <thead>
-            <tr style="background: grey; color: darkblack">
-                <th>#</th>
-                <th>Equipo</th>
-                <th class="pts">Puntos</th>
-                <th class="pj">Partidos Jugados</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for posicion in posiciones %}
-            <tr style="color: white">
-                <td>{{ forloop.counter }}</td>
-                <td>{{ posicion.equipo.nombre }}</td>
-                <td>{{ posicion.puntos }}</td>
-                <td>{{ posicion.PartidosJugados }}</td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
-    </div>
-    {% endblock %}
-</body>
-</html>
+{% extends "AppFutbolArg/Inicio.html" %}
+{% load static %}
+<title>{% block title %}Posiciones | Liga Argentina 2023{% endblock %}</title>
+{% block contenidoQueCambia %}
+<div class="container mt-5 margenPosiciones">
+<table id="posiciones" class="tablesorter1">
+    <thead>
+        <tr style="background: grey; color: darkblack">
+            <th>#</th>
+            <th>Equipo</th>
+            <th class="pts">Puntos</th>
+            <th class="pj">Partidos Jugados</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for posicion in posiciones %}
+        <tr style="color: white">
+            <td>{{ forloop.counter }}</td>
+            <td>{{ posicion.equipo.nombre }}</td>
+            <td>{{ posicion.puntos }}</td>
+            <td>{{ posicion.PartidosJugados }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+{% endblock %}
